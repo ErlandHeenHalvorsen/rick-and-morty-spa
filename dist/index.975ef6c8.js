@@ -27915,14 +27915,27 @@ function Characters() {
     _s();
     const [characters, setCharacters] = (0, _react.useState)([]);
     const [page, setPage] = (0, _react.useState)(1);
+    const [searchQuery, setSearchQuery] = (0, _react.useState)("");
     (0, _react.useEffect)(()=>{
-        fetch(`https://rickandmortyapi.com/api/character/?page=${page}`).then((response)=>response.json()).then((data)=>setCharacters(data.results));
+        fetch(`https://rickandmortyapi.com/api/character/?page=${page}&name=${searchQuery}`).then((response)=>response.json()).then((data)=>{
+            if (data.results) setCharacters(data.results);
+            else setCharacters([]);
+        });
     }, [
-        page
+        page,
+        searchQuery
     ]);
     const handleLoadMore = ()=>{
         setPage((prevPage)=>prevPage + 1);
+        if (page === 42) setPage(1);
     };
+    const handleSearchChange = (event)=>{
+        setSearchQuery(event.target.value);
+        if (searchQuery === "") setPage(1);
+    };
+    //const filteredCharacters = characters.filter((character) =>
+    //  character.name.toLowerCase().includes(searchQuery.toLowerCase())
+    //);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: (0, _charactersModuleCssDefault.default).characters,
         children: [
@@ -27930,12 +27943,21 @@ function Characters() {
                 children: "Characters"
             }, void 0, false, {
                 fileName: "src/pages/Characters/Characters.js",
-                lineNumber: 21,
+                lineNumber: 42,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                type: "text",
+                placeholder: "Search",
+                value: searchQuery,
+                onChange: handleSearchChange
+            }, void 0, false, {
+                fileName: "src/pages/Characters/Characters.js",
+                lineNumber: 43,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                children: characters.map((character)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                        className: (0, _charactersModuleCssDefault.default).card,
+                children: characters.length > 0 ? characters.map((character)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
                             to: `/characters/${character.id}`,
                             children: [
@@ -27944,30 +27966,36 @@ function Characters() {
                                     alt: character.name
                                 }, void 0, false, {
                                     fileName: "src/pages/Characters/Characters.js",
-                                    lineNumber: 26,
-                                    columnNumber: 15
+                                    lineNumber: 54,
+                                    columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                                     children: character.name
                                 }, void 0, false, {
                                     fileName: "src/pages/Characters/Characters.js",
-                                    lineNumber: 27,
-                                    columnNumber: 15
+                                    lineNumber: 55,
+                                    columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/Characters/Characters.js",
-                            lineNumber: 25,
-                            columnNumber: 13
+                            lineNumber: 53,
+                            columnNumber: 15
                         }, this)
                     }, character.id, false, {
                         fileName: "src/pages/Characters/Characters.js",
-                        lineNumber: 24,
-                        columnNumber: 11
-                    }, this))
+                        lineNumber: 52,
+                        columnNumber: 13
+                    }, this)) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                    children: "No Characters Found"
+                }, void 0, false, {
+                    fileName: "src/pages/Characters/Characters.js",
+                    lineNumber: 60,
+                    columnNumber: 11
+                }, this)
             }, void 0, false, {
                 fileName: "src/pages/Characters/Characters.js",
-                lineNumber: 22,
+                lineNumber: 49,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27975,7 +28003,7 @@ function Characters() {
                 children: "Load More"
             }, void 0, false, {
                 fileName: "src/pages/Characters/Characters.js",
-                lineNumber: 32,
+                lineNumber: 63,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27986,17 +28014,17 @@ function Characters() {
                 ]
             }, void 0, true, {
                 fileName: "src/pages/Characters/Characters.js",
-                lineNumber: 33,
+                lineNumber: 64,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/pages/Characters/Characters.js",
-        lineNumber: 20,
+        lineNumber: 41,
         columnNumber: 5
     }, this);
 }
-_s(Characters, "hmu4IKhsAxsPCpQIjnBB9JKD9jg=");
+_s(Characters, "IB6/DqbrMmpIjaP1yXBbSbHc4WA=");
 _c = Characters;
 exports.default = Characters;
 var _c;
