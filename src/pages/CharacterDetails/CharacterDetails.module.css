@@ -1,0 +1,36 @@
+.details {
+  padding: 2rem;
+  text-align: center;
+}
+
+.details h1 {
+  font-family: "Eater", cursive;
+  margin-bottom: 1rem;
+}
+
+.details img {
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.info {
+  background-color: #dfdfdf;
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 0 auto 1rem;
+  text-align: left;
+  max-width: 480px;
+}
+
+.info p {
+  margin: 0.5rem 0;
+}
+
+.backButton {
+  background-color: #61dafb;
+  color: black;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-family: "Roboto", sans-serif;
+}

@@ -1,0 +1,28 @@
+.hero {
+  background-image: url("/public/img/Rick-and-Morty-Staffel-2-Szene-5-1355473076.jpg");
+  background-size: cover;
+  height: 600px;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  color: white;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.overlay h1 {
+  color: white;
+  margin: 30px;
+  font-family: "Eater", cursive; /* Use Eater font for the heading */
+}
+.cta {
+  background-color: #61dafb;
+  color: black;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-family: "Roboto", sans-serif; /* Use Roboto for the button */
+}

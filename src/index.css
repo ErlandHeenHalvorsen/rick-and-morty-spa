@@ -1,0 +1,35 @@
+/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Eater&family=Roboto:wght@400;700&display=swap");
+/* Reset rules */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+  padding-bottom: 3rem; /* Adjust based on footer height */
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Eater", cursive;
+  color: #282c34;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ul {
+  list-style: none;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}

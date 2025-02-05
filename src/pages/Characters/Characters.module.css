@@ -1,0 +1,24 @@
+.characters {
+  padding: 2rem;
+}
+.characters h1 {
+  font-family: "Eater", cursive; /* Use Eater font for the heading */
+}
+.characters ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  text-align: center;
+}
+.card img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+.card h2 {
+  font-family: "Roboto", sans-serif; /* Use Roboto for the character names */
+}

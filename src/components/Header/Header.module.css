@@ -1,0 +1,22 @@
+.header {
+  background-color: #282c34;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Eater", cursive; /* Use Eater font for the header */
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+.menu a {
+  color: white;
+  text-decoration: none;
+}
