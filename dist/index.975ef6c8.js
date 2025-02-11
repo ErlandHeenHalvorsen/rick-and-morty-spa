@@ -27916,24 +27916,33 @@ function Characters() {
     const [characters, setCharacters] = (0, _react.useState)([]);
     const [page, setPage] = (0, _react.useState)(1);
     const [searchQuery, setSearchQuery] = (0, _react.useState)("");
+    const [species, setSpecies] = (0, _react.useState)("all");
+    // const [species, setSpecies] = useState("all");
     (0, _react.useEffect)(()=>{
-        fetch(`https://rickandmortyapi.com/api/character/?page=${page}&name=${searchQuery}`).then((response)=>response.json()).then((data)=>{
+        const speciesQuery = species === "all" ? "" : species;
+        fetch(`https://rickandmortyapi.com/api/character/?page=${page}&name=${searchQuery}&species=${speciesQuery}`).then((response)=>response.json()).then((data)=>{
             if (data.results) setCharacters(data.results);
             else setCharacters([]);
         });
     }, [
         page,
-        searchQuery
+        searchQuery,
+        species
     ]);
     const handleLoadMore = ()=>{
-        setPage((prevPage)=>prevPage + 1);
-        if (page === 42) setPage(1);
+        setPage((nextPage)=>nextPage === 42 ? 1 : nextPage + 1);
+    };
+    const handleLoadBack = ()=>{
+        setPage((prevPage)=>prevPage === 1 ? 42 : prevPage - 1);
     };
     const handleSearchChange = (event)=>{
         setSearchQuery(event.target.value);
         if (searchQuery === "") setPage(1);
     };
-    //const filteredCharacters = characters.filter((character) =>
+    const handleSpeciesChange = (event)=>{
+        setSpecies(event.target.value);
+    };
+    // const filteredCharacters = characters.filter((character) =>
     //  character.name.toLowerCase().includes(searchQuery.toLowerCase())
     //);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27943,17 +27952,67 @@ function Characters() {
                 children: "Characters"
             }, void 0, false, {
                 fileName: "src/pages/Characters/Characters.js",
-                lineNumber: 42,
+                lineNumber: 50,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                type: "text",
-                placeholder: "Search",
-                value: searchQuery,
-                onChange: handleSearchChange
-            }, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "text",
+                        placeholder: "Search",
+                        value: searchQuery,
+                        onChange: handleSearchChange
+                    }, void 0, false, {
+                        fileName: "src/pages/Characters/Characters.js",
+                        lineNumber: 52,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
+                        value: species,
+                        onChange: handleSpeciesChange,
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                value: "",
+                                children: "All"
+                            }, void 0, false, {
+                                fileName: "src/pages/Characters/Characters.js",
+                                lineNumber: 59,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                value: "human",
+                                children: "Human"
+                            }, void 0, false, {
+                                fileName: "src/pages/Characters/Characters.js",
+                                lineNumber: 60,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                value: "alien",
+                                children: "Alien"
+                            }, void 0, false, {
+                                fileName: "src/pages/Characters/Characters.js",
+                                lineNumber: 61,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                value: "robot",
+                                children: "Robot"
+                            }, void 0, false, {
+                                fileName: "src/pages/Characters/Characters.js",
+                                lineNumber: 62,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/pages/Characters/Characters.js",
+                        lineNumber: 58,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
                 fileName: "src/pages/Characters/Characters.js",
-                lineNumber: 43,
+                lineNumber: 51,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -27966,44 +28025,52 @@ function Characters() {
                                     alt: character.name
                                 }, void 0, false, {
                                     fileName: "src/pages/Characters/Characters.js",
-                                    lineNumber: 54,
+                                    lineNumber: 70,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                                     children: character.name
                                 }, void 0, false, {
                                     fileName: "src/pages/Characters/Characters.js",
-                                    lineNumber: 55,
+                                    lineNumber: 71,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/Characters/Characters.js",
-                            lineNumber: 53,
+                            lineNumber: 69,
                             columnNumber: 15
                         }, this)
                     }, character.id, false, {
                         fileName: "src/pages/Characters/Characters.js",
-                        lineNumber: 52,
+                        lineNumber: 68,
                         columnNumber: 13
                     }, this)) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: "No Characters Found"
                 }, void 0, false, {
                     fileName: "src/pages/Characters/Characters.js",
-                    lineNumber: 60,
+                    lineNumber: 76,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "src/pages/Characters/Characters.js",
-                lineNumber: 49,
+                lineNumber: 65,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: handleLoadBack,
+                children: "Back"
+            }, void 0, false, {
+                fileName: "src/pages/Characters/Characters.js",
+                lineNumber: 79,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                 onClick: handleLoadMore,
-                children: "Load More"
+                children: "Next"
             }, void 0, false, {
                 fileName: "src/pages/Characters/Characters.js",
-                lineNumber: 63,
+                lineNumber: 80,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -28014,19 +28081,22 @@ function Characters() {
                 ]
             }, void 0, true, {
                 fileName: "src/pages/Characters/Characters.js",
-                lineNumber: 64,
+                lineNumber: 81,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/pages/Characters/Characters.js",
-        lineNumber: 41,
+        lineNumber: 49,
         columnNumber: 5
     }, this);
 }
-_s(Characters, "IB6/DqbrMmpIjaP1yXBbSbHc4WA=");
+_s(Characters, "SUo1cjpz3TNjYQwIW2JJe8hg32s=");
 _c = Characters;
-exports.default = Characters;
+exports.default = Characters; // In the above code, we have a Characters component that fetches data from the Rick and Morty API and displays a list of characters.
+ // The component has a search input and a select input to filter the characters by name and species. The component also has a "Load More" button to load more characters from the API.
+ // The component uses the useState and useEffect hooks to manage state and side effects.
+ // The component also uses the Link component from react-router to navigate to the CharacterDetails component when a character is clicked. The component uses CSS modules for styling.
 var _c;
 $RefreshReg$(_c, "Characters");
 
